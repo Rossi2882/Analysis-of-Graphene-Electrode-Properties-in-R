@@ -1,34 +1,34 @@
-# Analiza Właściwości Elektrod Grafenowych w R 
+# Analysis of Graphene Electrode Properties in R 
 
-##  Cel Projektu
-Głównym celem tego projektu jest analiza danych eksperymentalnych dotyczących właściwości elektrod grafenowych. Projekt skupia się na identyfikacji kluczowych czynników fizykochemicznych i konfiguracyjnych, które mają największy wpływ na **pojemność właściwą** (`Capacitance (F/g)`) badanych materiałów.
+##  Project Objective
+The main goal of this project is to analyze experimental data regarding the properties of graphene electrodes. The project focuses on identifying the key physicochemical and configurational factors that have the greatest impact on the **specific capacitance** (`Capacitance (F/g)`) of the tested materials.
 
-##  Główne Wnioski
-Zbudowany model uczenia maszynowego (XGBoost) posłużył do analizy ważności cech (Explainable AI / Feature Importance). Najważniejsze wnioski z analizy to:
-* **Kluczowe predyktory:** Największy wpływ na pojemność właściwą mają `Potential Window (V)` oraz `Current Density (A/g)`. 
-* **Wpływ konfiguracji:** Zmienna `Electrode Configuration` ma również wysoce istotne znaczenie dla końcowych osiągów elektrody.
-* **Brak silnych korelacji:** Analiza macierzy korelacji wykazała brak silnych, bezpośrednich zależności liniowych pomiędzy zmiennymi numerycznymi w zbiorze, co uzasadnia użycie nieliniowych modeli (jak XGBoost).
+##  Key Findings
+A machine learning model (XGBoost) was built and used for feature importance analysis (Explainable AI). The most important findings from the analysis are:
+* **Key predictors:** `Potential Window (V)` and `Current Density (A/g)` have the greatest impact on specific capacitance. 
+* **Impact of configuration:** The `Electrode Configuration` variable is also highly significant for the final performance of the electrode.
+* **Lack of strong correlations:** The correlation matrix analysis showed no strong, direct linear relationships between the numerical variables in the dataset, which justifies the use of non-linear models (such as XGBoost).
 
-##  Przetwarzanie Danych (Data Preprocessing)
-Oryginalny zbiór danych przeszedł rygorystyczny proces czyszczenia, aby zapewnić wysoką jakość modelu:
-1. **Redukcja wymiarowości:** Z początkowych 21 kolumn i 925 wierszy zbiór został zredukowany do 12 kolumn i 921 wierszy.
-2. **Usuwanie braków:** Kolumny z brakami danych przekraczającymi 60% (głównie zmienne atomowe i linki do publikacji) oraz wiersze z więcej niż 4 brakami zostały usunięte.
-3. **Imputacja:** * Braki w danych numerycznych zastąpiono **medianą**.
-   * Braki w zmiennych kategorycznych oznaczono jako `"Unknown"`.
+##  Data Preprocessing
+The original dataset underwent a rigorous cleaning process to ensure high model quality:
+1. **Dimensionality reduction:** The dataset was reduced from the initial 21 columns and 925 rows to 12 columns and 921 rows.
+2. **Handling missing data:** Columns with over 60% missing data (mainly atomic variables and publication links) and rows with more than 4 missing values were removed.
+3. **Imputation:** * Missing numerical data was replaced with the **median**.
+   * Missing categorical variables were labeled as `"Unknown"`.
 
-##  Wykorzystane Technologie i Biblioteki
-Projekt został w całości zrealizowany w języku **R**, z wykorzystaniem środowiska R Markdown do generowania raportu HTML.
+##  Technologies & Libraries Used
+The project was entirely developed in **R**, utilizing the R Markdown environment to generate a comprehensive HTML report.
 
-* **Przetwarzanie danych:** `dplyr`, `tidyr`, `stringr`, `tibble`
-* **Wizualizacja:** `ggplot2`, `plotly` (wykresy interaktywne), `ggcorrplot`, `GGally`
+* **Data processing:** `dplyr`, `tidyr`, `stringr`, `tibble`
+* **Visualization:** `ggplot2`, `plotly` (interactive plots), `ggcorrplot`, `GGally`
 * **Machine Learning & XAI:** `xgboost`, `caret`
-* **Formatowanie raportu:** `knitr`, `kableExtra`
+* **Report formatting:** `knitr`, `kableExtra`
 
-##  Jak uruchomić projekt lokalnie?
+##  How to Run the Project Locally
 
-1. Sklonuj to repozytorium na swój dysk.
-2. Upewnij się, że masz zainstalowane środowisko R oraz RStudio.
-3. Plik z danymi (`data.csv`) powinien znajdować się w folderze `data/` w głównym katalogu projektu.
-4. Zainstaluj wymagane biblioteki (jeśli ich nie posiadasz):
+1. Clone this repository to your local machine.
+2. Ensure you have R and RStudio installed.
+3. The data file (`data.csv`) should be located in the `data/` folder in the project's root directory.
+4. Install the required libraries (if you don't have them already):
    ```R
-   install.packages(c("dplyr", "tidyr", "stringr", "tibble", "ggplot2", "plotly", "GGally", "ggcorrplot", "knitr", "kableExtra", "caret", "xgboost", "here", "scales"))
+   install.packages(c("dplyr", "tidyr", "stringr", "tibble", "ggplot2", "plotly", "GGally", "ggcorrplot", "knitr", "kableExtra
